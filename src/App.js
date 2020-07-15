@@ -1,5 +1,6 @@
 import React from 'react';
-import Navbar from './components/Navbar/Navbar.js';
+import Navbar from './components/Navbar/Navbar';
+import Logo from './components/Logo/Logo.js';
 import './App.css';
 
 class App extends React.Component {
@@ -7,6 +8,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar />
+        <Logo />
+        {/*
+        <ImageLinkForm>
+        <FaceRecognition> */}
 
       </div>
     );
