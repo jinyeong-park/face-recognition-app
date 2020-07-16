@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Navbar = () => {
+const Navbar = ({onRouteChange}) => {
   return (
     <nav style={{display: 'flex', justifyContent: 'flex-end'}}>
-      <p className='f3 link dim white underline pa3 pointer'>Sign out</p>
+      <p onClick={() => onRouteChange('signin')}
+      className='f3 link dim white underline pa3 pointer'>Sign out</p>
     </nav>
   );
 }

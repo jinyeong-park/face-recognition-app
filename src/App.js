@@ -35,6 +35,7 @@ class App extends React.Component {
       input: '',
       imageUrl: '',
       box: {},
+      route: 'signin'
     }
   }
 
@@ -70,20 +71,27 @@ class App extends React.Component {
     .catch(err => console.log('error happens',err));
   }
 
+  onRouteChange = (route) => {
+    this.setState({route: route})
+  }
 
   render() {
     return (
       <div className="App">
         <Particles className='particles'
          params={particlesOptions} />
-        <Navbar />
-        <SignIn />
-        <Logo />
-        <Rank />
-        <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}
-        />
-        <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl}/>
-
+        <Navbar onRouteChange={this.onRouteChange}/>
+        { this.state.route === 'signin'
+        ?
+        <SignIn onRouteChange={this.onRouteChange}/>
+        : <div>
+            <Logo />
+            <Rank />
+            <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}
+            />
+            <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl}/>
+        </div>
+        }
       </div>
     );
 
