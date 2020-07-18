@@ -37,8 +37,32 @@ class App extends React.Component {
       imageUrl: '',
       box: {},
       route: 'signin',
-      isSignedIn: false
+      isSignedIn: false,
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        entries: 0,
+        joined: ''
+      }
     }
+  }
+
+  // componentDidMount() {
+  //   // fetch server address
+  //   fetch('http://localhost:3000')
+  //   .then(response => response.json())
+  //   .then(data => console.log(data))
+  // }
+
+  updateUser = (data) => {
+    this.setState({user: {
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      entries: data.entries,
+      joined: data.joined
+    }})
   }
 
   calculateFaceLocation = (data) => {
@@ -90,7 +114,7 @@ class App extends React.Component {
         { route === 'home'
         ? <div>
             <Logo />
-            <Rank />
+            <Rank name={this.state.user.name} entries={this.state.user.entries}/>
             <ImageLinkForm
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
@@ -99,8 +123,8 @@ class App extends React.Component {
           </div>
         : (
            this.state.route === 'signin'
-           ? <SignIn onRouteChange={this.onRouteChange} />
-           : <Register onRouteChange={this.onRouteChange} />
+           ? <SignIn updateUser={this.updateUser} onRouteChange={this.onRouteChange} />
+           : <Register updateUser={this.updateUser} onRouteChange={this.onRouteChange} />
           )
         }
       </div>
