@@ -10,8 +10,6 @@ import Rank from './components/Rank/Rank';
 import './App.css';
 
 
-
-
 const particlesOptions = {
   particles: {
     number: {
@@ -76,7 +74,7 @@ class App extends React.Component {
   }
 
   displayFaceBox = (box) => {
-    this.setState({box: box})
+    this.setState({box: box});
   }
 
   onInputChange = (event) => {
@@ -148,7 +146,6 @@ class App extends React.Component {
         }
       </div>
     );
-
   }
 }
 
